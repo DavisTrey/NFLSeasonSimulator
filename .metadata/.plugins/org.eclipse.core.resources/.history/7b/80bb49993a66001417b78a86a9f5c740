@@ -1,0 +1,71 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class NFLTeam {
+	private String teamName;
+	//Array of wins/losses. Can be "Win", "Loss", "Tie", or "" for no game
+	private List<String> record; 
+	//Array of percent chances to win for the rest of the season's games. NOTE: 
+	// if there is no game that week, the percentage is -1
+	private List<Double> calculatedPercentages; 
+	//Array of teams the team will play against for the rest of the season games
+	private List<String> teamsToPlay;
+	
+	public NFLTeam(String teamName, List<String> record, List<Double> calculatedPercentages, List<String> teamsToPlay){
+		this.teamName = teamName;
+		this.record = record;
+		this.calculatedPercentages = calculatedPercentages;	
+		this.teamsToPlay = teamsToPlay;
+	}
+	
+	public NFLTeam(NFLTeam team){
+		this.teamName = new String(team.teamName);
+		this.record = new ArrayList<String>();
+		for(String s : team.record){
+			this.record.add(new String(s));
+		}
+		this.calculatedPercentages = new ArrayList<Double>();
+		for(Double d : team.calculatedPercentages){
+			this.calculatedPercentages.add(new Double(d));
+		}
+		this.teamsToPlay = new ArrayList<String>(team.teamsToPlay);
+		for(String s : team.teamsToPlay){
+			this.record.add(new String(s));
+		}
+	}
+	
+	public String getTeamName() {
+		return teamName;
+	}
+
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+
+	public List<String> getRecord() {
+		return record;
+	}
+
+	public void setRecord(List<String> record) {
+		this.record = record;
+	}
+
+	public List<Double> getCalculatedPercentages() {
+		return calculatedPercentages;
+	}
+
+	public void setCalculatedPercentages(List<Double> calculatedPercentages) {
+		this.calculatedPercentages = calculatedPercentages;
+	}
+
+	public List<String> getTeamsToPlay() {
+		return teamsToPlay;
+	}
+
+	public void setTeamsToPlay(List<String> teamsToPlay) {
+		this.teamsToPlay = teamsToPlay;
+	}
+
+	
+}

@@ -1,0 +1,49 @@
+
+public class NFLTeam {
+	private String teamName;
+	//Array of wins/losses. Win is "W", Loss is "L"
+	private String[] record; 
+	//Array of percent chances to win for the rest of the season games
+	private double[] calculatedPercentages; 
+	//Array of teams the team will play against for the rest of the season games
+	private String[] teamsToPlay;
+	
+	public NFLTeam(String teamName, String[] record, double[] calculatedPercentages, String[] teamsToPlay){
+		this.teamName = teamName;
+		this.record = record;
+		this.calculatedPercentages = calculatedPercentages;	
+		this.teamsToPlay = teamsToPlay;
+	}
+	
+	public String getTeamName() {
+		return teamName;
+	}
+
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+
+	public String[] getRecord() {
+		return record;
+	}
+
+	public void setRecord(String[] record) {
+		this.record = record;
+	}
+
+	public double[] getCalculatedPercentages() {
+		return calculatedPercentages;
+	}
+
+	public void setCalculatedPercentages(double[] calculatedPercentages) {
+		this.calculatedPercentages = calculatedPercentages;
+	}
+
+	public String[] getTeamsToPlay() {
+		return teamsToPlay;
+	}
+
+	public void setTeamsToPlay(String[] teamsToPlay) {
+		this.teamsToPlay = teamsToPlay;
+	}
+}

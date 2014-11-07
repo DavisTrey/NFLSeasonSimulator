@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class SeasonSimulator {
+	public static final int seasonsToSimulate = 100;
+	private List<NFLTeam> teams;
+	private List<Season> seasons;
+	
+	public SeasonSimulator(List<NFLTeam> teams){
+		this.teams = teams;
+		simulateSeasons(teams);
+		
+	}
+	
+	private void simulateSeasons(List<NFLTeam> teams){
+		List<NFLTeam> copyOfTeams = new ArrayList<NFLTeam>();
+		for(NFLTeam t : teams){
+			copyOfTeams.add(new NFLTeam(t));
+		}
+	}
+	
+	
+	private List<NFLTeam> copyTeams(List<NFLTeam>){
+		List<NFLTeam> copyOfTeams = new ArrayList<NFLTeam>();
+		for(NFLTeam t : teams){
+			copyOfTeams.add(new NFLTeam(t));
+		}
+		return copyOfTeams;
+	}
+}

@@ -1,0 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Division {
+	public List<String> teams = new ArrayList<String>();
+}

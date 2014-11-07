@@ -1,0 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Season {
+	private List<NFLTeam> teams = new ArrayList<NFLTeam>();
+	private List<NFLTeam> divisionPlayoffPlacement = new ArrayList<NFLTeam>();
+	private List<NFLTeam> conferencePlayoffPlacement = new ArrayList<NFLTeam>();
+}

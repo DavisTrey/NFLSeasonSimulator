@@ -1,0 +1,19 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public enum Division {
+	AFCEast ({"New England Patriots", "Buffalo Bills", "Miami Dolphins", "New York Jets"}),
+	AFCNorth ({"Pittsburgh Steelers", "Cleveland Browns", "Cincinnati Bengals", "Baltimore Ravens"}),
+	AFCSouth ({"Indianapolis Colts", "Houston Texans", "Tennessee Titans", "Jacksonville Jaguars"}),
+	AFCWest ({"Denver Broncos", "Kansas City Chiefs", "San Diego Chargers", "Oakland Raiders"}),
+	NFCEast ({"Philadelphia Eagles", "Dallas Cowboys", "New York Giants", "Washington Redskins"}),
+	NFCNorth ({"Detroit Lions", "Green Bay Packers", "Minnesota Vikings", "Chicago Bears"}),
+	NFCSouth ({"New Orleans Saints", "Carolina Panthers", "Atlanta Falcons", "Tampa Bay Buccaneers"}),
+	NFCWest ({"Arizona Cardinals", "Seattle Seahawks", "San Francisco 49ers", "St. Louis Rams"});
+	
+	public List<String> teams = new ArrayList<String>();
+	private Division(List<String> teams){
+		this.teams = teams;
+	}
+}

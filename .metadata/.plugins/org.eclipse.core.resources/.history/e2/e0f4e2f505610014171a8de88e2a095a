@@ -1,0 +1,11 @@
+import java.util.List;
+
+
+public class SeasonSimulator {
+	private List<NFLTeam> teams;
+	
+	public SeasonSimulator(List<NFLTeam> teams){
+		this.teams = teams;
+		
+	}
+}

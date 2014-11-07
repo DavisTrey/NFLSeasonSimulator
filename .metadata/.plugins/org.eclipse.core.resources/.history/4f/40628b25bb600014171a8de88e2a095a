@@ -1,0 +1,77 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class DataReader {
+	//integer representing the total number of columns in the wins[] and games[] arrays
+	public static final int totalColumnsPerSeason = 17;
+	public static final double noGamePercentage = -1;
+	private List<NFLTeam> teams = new ArrayList<NFLTeam>();
+	//integer representing the current week of the season (specifically, representing
+	// the position of the first game that has not been played in the wins[] arrays for each team)
+	private int currentWeek; 
+	
+	public DataReader(List<String[]> wins, List<String[]> games){
+		parseTeams(wins, games);
+	}
+	
+	/**
+	 * Parses all teams specified in the loaded CSV files into objects
+	 */
+	private void parseTeams(List<String[]> wins, List<String[]> games){
+		this.currentWeek = findCurrentWeek(wins);
+		for(int i=0; i<wins.size(); i++){
+			parseIndividualTeam(wins.get(i), wins.get(i));
+		}
+	}
+	/**
+	 * Finds the current week of the NFL season. The integer returned is
+	 * the position of the first week of games which have not been played.
+	 */
+	private int findCurrentWeek(List<String[]> wins){
+		int earliestColumn = Integer.MAX_VALUE;
+		for(String[] s: wins){
+			for(int i=0; i<s.length; i++){
+				// Slightly hard coded. 
+				if(s[i].contains(".")){
+					if(i<earliestColumn){
+						earliestColumn = i;
+					}
+				}
+			}
+		}
+		System.out.println("Current Week: " + earliestColumn);
+		return earliestColumn;
+	}
+	
+	/**
+	 * Parses an individual team's data from csv data into an NFLTeam
+	 * object. 
+	 * @param wins CSV containing the team's existing wins and losses and future
+	 * probabilities
+	 * @param games CSV containing what team each game is against
+	 */
+	private void parseIndividualTeam(String[] wins, String[] games){
+		String teamName = wins[0];
+		List<String> record = new ArrayList<String>();
+		List<Double> percentages = new ArrayList<Double>();
+		
+		//Start at i=1 cause first column is team names
+		for(int i=1; i<wins.length; i++){
+			//If less than current week, we are looking at the team's record
+			if(i < currentWeek){
+				record.add(wins[i]);			
+			}
+			else{
+				Double percentWin;
+				if(wins[i].equals("")){
+					percentWin = -1.0;
+				}
+				else{
+					percentWin = Double.parseDouble(wins[i]);
+				}
+				
+			}
+		}
+	}
+}

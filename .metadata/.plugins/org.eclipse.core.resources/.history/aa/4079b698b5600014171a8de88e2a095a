@@ -1,0 +1,10 @@
+import java.util.List;
+
+
+public class DataReader {
+	private List<NFLTeam> teams = new ArrayList<NFLTeam>();
+	
+	public DataReader(List<String[]> Wins, List<String[]> Games){
+		
+	}
+}

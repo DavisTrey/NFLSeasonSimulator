@@ -1,0 +1,57 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class SeasonSimulator {
+	public static final int seasonsToSimulate = 100;
+	private List<NFLTeam> teams;
+	private List<Season> seasons;
+	
+	public SeasonSimulator(List<NFLTeam> teams){
+		this.teams = teams;
+	}
+	
+	public void simulate(){
+		Season s = simulateSeasons(teams);
+	}
+	
+	/**
+	 * Simulates one full season of the NFL. Goes through each game and randomizes
+	 * a win or loss. The method then "locks" the accompanying game for the other team
+	 * (so that, for instance, if the Chargers beat the Patriots one week, the Patriots
+	 * also lose to the Chargers in the context of the simulation)
+	 */
+	private Season simulateSeasons(List<NFLTeam> teams){
+		List<NFLTeam> copiedList = copyTeams(teams);
+		for(NFLTeam team: copiedList){
+			List<Double> gamePercentages = team.getCalculatedPercentages();
+			for(int i=0; i<gamePercentages.size(); i++){	
+				Double percent = Math.random();
+				if(percent <= gamePercentages.get(i)){
+					//the team won! First, add the win
+					team.getRecord().add("Win");
+					//Next, we must lock the coupled game
+								
+				}
+				else{
+					//The team lost. First, add the loss
+					team.getRecord().add("Loss");
+					//Next, lock the coupled game
+				}
+			}
+		}
+		
+		
+		return null;
+
+	}
+	
+	
+	private List<NFLTeam> copyTeams(List<NFLTeam> teams){
+		List<NFLTeam> copyOfTeams = new ArrayList<NFLTeam>();
+		for(NFLTeam t : teams){
+			copyOfTeams.add(new NFLTeam(t));
+		}
+		return copyOfTeams;
+	}
+}

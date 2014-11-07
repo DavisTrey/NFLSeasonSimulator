@@ -1,0 +1,91 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class SeasonSimulator {
+	public static final int seasonsToSimulate = 100;
+	private List<NFLTeam> teams;
+	private List<Season> seasons;
+	
+	public SeasonSimulator(List<NFLTeam> teams){
+		this.teams = teams;
+	}
+	
+	public void simulate(){
+		Season s = simulateSeasons(teams);
+	}
+	
+	/**
+	 * Simulates one full season of the NFL. Goes through each game and randomizes
+	 * a win or loss. The method then "locks" the accompanying game for the other team
+	 * (so that, for instance, if the Chargers beat the Patriots one week, the Patriots
+	 * also lose to the Chargers in the context of the simulation)
+	 * 
+	 * Note: There is some redundancy in the fact that after the first game, 
+	 * the second game gets locked, and after the second game, the program goes
+	 * back and locks the first game. This does not alter the outcome, but 
+	 * perhaps it is worth adding a check to see if the lock has already been done
+	 */
+	private Season simulateSeasons(List<NFLTeam> teams){
+		//A copy of the teams is made as changes will be made to records, etc, and 
+		//we do not want to affect the original data
+		List<NFLTeam> copiedList = copyTeams(teams);
+		
+		for(NFLTeam team: copiedList){
+			List<Double> gamePercentages = team.getCalculatedPercentages();
+			for(int i=0; i<gamePercentages.size(); i++){	
+				Double percent = Math.random();
+				if(gamePercentages.get(i) == -1){
+					//No game that week. No need to do anything
+					System.out.println("No game this week\n");
+					continue;
+				}
+				else if(percent <= gamePercentages.get(i)){
+					//The team won!
+					//First, we must lock the coupled game
+					String nameOfOpponent = team.getOpponents().get(team.getRecord().size());
+					System.out.println(team.getTeamName()+" won vs "+ nameOfOpponent+". Percentages:"+ gamePercentages.get(i)+ " vs. " + percent);
+					for(NFLTeam opponent : copiedList){
+						//Find the team with that name
+						if(opponent.getTeamName().equals(nameOfOpponent)){
+							//Lock their game that week to a loss
+							team.getCalculatedPercentages().set(i, 0.0);
+						}
+					}
+					
+					//Finally, add the win 
+					team.getRecord().add("Win");
+				}
+				else{
+					//The team lost
+					//First, we must lock the coupled game
+					String nameOfOpponent = team.getOpponents().get(team.getRecord().size());
+					System.out.println(team.getTeamName()+" lost vs "+ nameOfOpponent+". Percentages:"+ gamePercentages.get(i)+ " vs. " + percent);
+					for(NFLTeam opponent : copiedList){
+						//Find the team with that name
+						if(opponent.getTeamName().equals(nameOfOpponent)){
+							//Lock their game that week to a loss
+							team.getCalculatedPercentages().set(i, 1.0);
+						}
+					}
+					//Next, lock the coupled game
+					team.getRecord().add("Loss");
+					
+				}
+			}
+			
+		}
+		
+		return new Season(copiedList);
+
+	}
+	
+	
+	private List<NFLTeam> copyTeams(List<NFLTeam> teams){
+		List<NFLTeam> copyOfTeams = new ArrayList<NFLTeam>();
+		for(NFLTeam t : teams){
+			copyOfTeams.add(new NFLTeam(t));
+		}
+		return copyOfTeams;
+	}
+}

@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+ * Data structure representing a full NFL season. Contains data on the wins and losses
+ * for all teams, and from that data determines playoff placements. 
+ * @author Davis Treybig
+ *
+ */
+public class Season {
+	private List<NFLTeam> teams = new ArrayList<NFLTeam>();
+	private List<NFLTeam> divisionPlayoffPlacement = new ArrayList<NFLTeam>();
+	private List<NFLTeam> conferencePlayoffPlacement = new ArrayList<NFLTeam>();
+	
+	public Season(List<NFLTeam> teamsInSeason){
+		this.teams = teamsInSeason;
+		findDivisionPlayoffSeats();
+	}
+	
+	
+	private void findDivisionPlayoffSeats(){
+		Conference NFC = Conference.NFC;
+		Conference AFC = Conference.AFC;
+		for(Division d: NFC.getDivisions()){
+			NFLTeam team = findDivisionWinner(d);
+		}
+	}
+	
+	private NFLTeam findDivisionWinner(Division d){
+		List<String> teamsInDivision = d.getTeams();
+		int currentWins = 0;
+		NFLTeam currentTeam = null;
+		for(String s : teamsInDivision){
+			for(NFLTeam team : teams){
+				if(team.getTeamName().equals(s)){
+					if(team.getWins() > currentWins){
+						currentTeam = team;
+						currentWins = team.getWins();
+					}
+				}
+			}
+		}
+		
+		return currentTeam;
+	}
+}

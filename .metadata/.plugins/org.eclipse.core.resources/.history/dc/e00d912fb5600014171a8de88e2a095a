@@ -1,0 +1,9 @@
+import java.util.List;
+
+
+public class DataReader {
+	
+	public DataReader(List<String[]> Wins, List<String[]> Games){
+		
+	}
+}

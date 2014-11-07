@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
+/**
+ * Data structure representing a full NFL season. Contains data on the wins and losses
+ * for all teams, and from that data determines playoff placements. 
+ * @author Davis Treybig
+ *
+ */
+public class Season {
+	private List<NFLTeam> teams = new ArrayList<NFLTeam>();
+	private List<NFLTeam> divisionPlayoffPlacement = new ArrayList<NFLTeam>();
+	private List<NFLTeam> conferencePlayoffPlacement = new ArrayList<NFLTeam>();
+	
+	public Season(List<NFLTeam> teamsInSeason){
+		this.teams = teamsInSeason;
+		Collections.sort(teams);
+		findPlayoffSeats();	
+	}
+	
+	
+	private void findPlayoffSeats(){
+		Conference NFC = Conference.NFC;
+		Conference AFC = Conference.AFC;
+		for(Division d: NFC.getDivisions()){
+			divisionPlayoffPlacement.add(findDivisionWinner(d));
+		}
+		for(Division d: AFC.getDivisions()){
+			divisionPlayoffPlacement.add(findDivisionWinner(d));
+		}
+		
+		
+		//Adding conference winners. Note: this works because
+		//the list of teams is sorted by wins from largest to
+		//smallest
+		for(NFLTeam t : teams){
+			if(NFC.getTeams().contains(t.getTeamName())){
+				
+			}
+		}
+		for(String s : NFC.getTeams()){
+			
+		}
+	}
+	
+
+	
+	/**
+	 * Finds the team in the division with the highest wins
+	 * 
+	 * TODO: TIEBREAKERS****
+	 */
+	private NFLTeam findDivisionWinner(Division d){
+		List<String> teamsInDivision = d.getTeams();
+		int currentWins = 0;
+		NFLTeam currentTeam = null;
+		for(String s : teamsInDivision){
+			for(NFLTeam team : teams){
+				if(team.getTeamName().equals(s)){
+					if(team.getWins() > currentWins){
+						currentTeam = team;
+						currentWins = team.getWins();
+					}
+				}
+			}
+		}
+		
+		return currentTeam;
+	}
+}

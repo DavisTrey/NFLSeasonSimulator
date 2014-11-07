@@ -1,0 +1,9 @@
+
+public class NFLDefaultsAndRules {
+	
+	public static final String[] AFCConference = {"New England Patriots", "Denver Broncos", "Pittsburgh Steelers", "Indianapolis Colts", "Cleveland Browns", "Kansas City Chiefs", "Buffalo Bills", "Miami Dolphins", "Cincinnati Bengals", "San Diego Chargers", "Baltimore Ravens", "Houston Texans", "Tennessee Titans", "New York Jets", "Jacksonville Jaguars", "Oakland Raiders"};
+	public static final String[] NFCConference = {"Arizona Cardinals", "Detroit Lions", "Philadelphia Eagles", "New Orleans Saints", "Dallas Cowboys", "Seattle Seahawks", "Green Bay Packers", "San Francisco 49ers", "Minnesota Vikings", "Carolina Panthers", "Chicago Bears", "St. Louis Rams", "New York Giants", "Washington Redskins", "Atlanta Falcons", "Tampa Bay Buccaneers"};
+	
+	
+
+}

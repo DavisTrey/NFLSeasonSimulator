@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class SeasonSimulator {
+	public static final int seasonsToSimulate = 100;
+	private List<NFLTeam> teams;
+	private List<Season> seasons;
+	
+	public SeasonSimulator(List<NFLTeam> teams){
+		this.teams = teams;
+	}
+	
+	public void simulate(){
+		simulateSeasons(teams);
+	}
+	
+	private void simulateSeasons(List<NFLTeam> teams){
+		List<NFLTeam> copiedList = copyTeams(teams);
+		for(NFLTeam team: copiedList){
+			List<Double> gamePercentages = team.getCalculatedPercentages();
+			for(int i=0; i<gamePercentages.size(); i++){
+				//
+				
+				Double percent = Math.random();
+				if(percent <= gamePercentages.get(i)){
+					//the team won!
+					
+					
+				}
+			}
+		}
+
+	}
+	
+	
+	private List<NFLTeam> copyTeams(List<NFLTeam> teams){
+		List<NFLTeam> copyOfTeams = new ArrayList<NFLTeam>();
+		for(NFLTeam t : teams){
+			copyOfTeams.add(new NFLTeam(t));
+		}
+		return copyOfTeams;
+	}
+}

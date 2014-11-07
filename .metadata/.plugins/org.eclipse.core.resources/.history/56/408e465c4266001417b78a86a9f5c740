@@ -1,0 +1,15 @@
+
+public class NFLDefaultsAndRules {
+
+	public static final String[String[]] AFC = {AFCEast, AFCNorth, AFCSouth, AFCWest};
+	public static final String[] AFCEast = {"New England Patriots", "Buffalo Bills", "Miami Dolphins", "New York Jets"};
+	public static final String[] AFCNorth = {"Pittsburgh Steelers", "Cleveland Browns", "Cincinnati Bengals", "Baltimore Ravens"};
+	public static final String[] AFCSouth = {"Indianapolis Colts", "Houston Texans", "Tennessee Titans", "Jacksonville Jaguars"};
+	public static final String[] AFCWest = {"Denver Broncos", "Kansas City Chiefs", "San Diego Chargers", "Oakland Raiders"};
+	
+	public static final String[] NFCEast = {"Philadelphia Eagles", "Dallas Cowboys", "New York Giants", "Washington Redskins"};
+	public static final String[] NFNorth = {"Detroit Lions", "Green Bay Packers", "Minnesota Vikings", "Chicago Bears"};
+	public static final String[] NFCSouth = {"New Orleans Saints", "Carolina Panthers", "Atlanta Falcons", "Tampa Bay Buccaneers"};
+	public static final String[] NFCWest = {"Arizona Cardinals", "Seattle Seahawks", "San Francisco 49ers", "St. Louis Rams"};
+
+}
