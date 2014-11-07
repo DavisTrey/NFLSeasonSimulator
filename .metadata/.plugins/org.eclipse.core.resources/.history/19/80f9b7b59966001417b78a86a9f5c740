@@ -54,12 +54,7 @@ public class Simulation {
 			for(String s: winDistribution.keySet()){
 				writer.append(s);
 				writer.append(",");
-				if(!playoffPercentage.containsKey(s)){
-					writer.append("0,");
-				}
-				else{
-					writer.append(String.valueOf(playoffPercentage.get(s))+",");
-				}		
+				writer.append(String.valueOf(playoffPercentage.get(s))+",");
 				for(Integer i : winDistribution.get(s)){
 					writer.append(i+",");
 				}

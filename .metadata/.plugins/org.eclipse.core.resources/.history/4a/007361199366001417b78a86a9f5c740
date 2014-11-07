@@ -3,7 +3,7 @@ import java.util.List;
 
 
 public class SeasonSimulator {
-	public static final int seasonsToSimulate = 1000;
+	public static final int seasonsToSimulate = 1000000;
 	private List<NFLTeam> teams;
 	private List<Season> seasons = new ArrayList<Season>();
 	
@@ -17,7 +17,6 @@ public class SeasonSimulator {
 			System.out.println(i);
 		}
 		Simulation simulation = new Simulation(seasons);
-		simulation.outputData();
 	}
 	
 	/**

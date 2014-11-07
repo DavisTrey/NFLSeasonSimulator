@@ -23,20 +23,6 @@ public class Season {
 		findPlayoffSeats();	
 	}
 	
-	public boolean isInPlayoffs(String teamName){
-		for(NFLTeam t : divisionPlayoffPlacement){
-			if(t.getTeamName().equals(teamName)){
-				return true;
-			}
-		}
-		for(NFLTeam t : conferencePlayoffPlacement){
-			if(t.getTeamName().equals(teamName)){
-				return true;
-			}
-		}
-		return false;
-	}
-	
 	private void findPlayoffSeats(){
 		Conference NFC = Conference.NFC;
 		Conference AFC = Conference.AFC;

@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
+public class Simulation {
+
+	private List<Season> simulatedSeasons = new ArrayList<Season>();
+	private Map<String, List<Integer>> winDistribution = new HashMap<String, List<Integer>>();
+	
+	
+	public Simulation(List<Season> seasons){
+		this.simulatedSeasons = seasons;
+	}
+	
+	public void outputData(){
+		for(Season s : simulatedSeasons){
+			for(NFLTeam t: s.getTeams()){
+				if(winDistribution.containsKey(t.getTeamName())){
+					winDistribution.get(t.getTeamName()).add(t.getWins());
+				}
+				else{
+					List<Integer> wins = new ArrayList<Integer>();
+					wins.add(t.getWins());
+					winDistribution.put(t.getTeamName(), wins);
+				}
+			}
+		}
+	}
+}

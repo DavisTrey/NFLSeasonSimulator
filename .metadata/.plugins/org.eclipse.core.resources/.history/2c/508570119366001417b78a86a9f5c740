@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
+public class Simulation {
+
+	private List<Season> simulatedSeasons = new ArrayList<Season>();
+	private Map<String, List<Integer>> winDistribution = new HashMap<String, List<Integer>>();
+	
+	
+	public Simulation(List<Season> seasons){
+		this.simulatedSeasons = seasons;
+	}
+	
+	public void outputData(){
+		for(Season s : simulatedSeasons){
+			
+		}
+	}
+	
+	
+}

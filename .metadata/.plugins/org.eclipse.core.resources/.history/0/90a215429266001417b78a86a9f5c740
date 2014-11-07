@@ -14,10 +14,8 @@ public class SeasonSimulator {
 	public void simulate(){
 		for(int i=0; i<seasonsToSimulate; i++){
 			seasons.add(simulateSeason(teams));
-			System.out.println(i);
 		}
 		Simulation simulation = new Simulation(seasons);
-		simulation.outputData();
 	}
 	
 	/**
