@@ -1,12 +1,25 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Class used to parse data originally loaded from .csv files. In particular, 
+ * the class takes in the array data of win percentages and games, and turns it 
+ * into a list of NFLTeams. 
+ * 
+ * @author Davis Treybig
+ *
+ */
 public class DataReader {
 	//integer representing the total number of columns in the wins[] and games[] arrays
 	public static final int totalColumnsPerSeason = 17;
+	
+	//Percentage chance to win for games which dont exist in a given week but are on the spreadsheet
+	//(Used to not have blank space in the percentage section)
 	public static final double noGamePercentage = -1;
+	
+	//List of all teams. These are crafted from the input .csv data
 	private List<NFLTeam> teams = new ArrayList<NFLTeam>();
+	
 	//integer representing the current week of the season (specifically, representing
 	// the position of the first game that has not been played in the wins[] arrays for each team)
 	private int currentWeek; 
@@ -26,6 +39,7 @@ public class DataReader {
 		SeasonSimulator simulator = new SeasonSimulator(teams);
 		simulator.simulate();
 	}
+	
 	/**
 	 * Finds the current week of the NFL season. The integer returned is
 	 * the position of the first week of games which have not been played.
@@ -48,18 +62,19 @@ public class DataReader {
 	}
 	
 	/**
-	 * Parses an individual team's data from csv data into an NFLTeam
+	 * Parses an individual team's data from .csv data into an NFLTeam
 	 * object. 
 	 * @param wins CSV containing the team's existing wins and losses and future
 	 * probabilities
 	 * @param games CSV containing what team each game is against
+	 * @param teamRow team currently being analyzed in the lists
 	 */
 	private void parseIndividualTeam(String[] wins, List<String[]> games, int teamRow){
 		String teamName = wins[0];
 		List<String> record = new ArrayList<String>();
 		List<Double> percentages = new ArrayList<Double>();
 		
-		//Start at i=1 cause first column is team names
+		//Start at i=1 because first column is team names
 		for(int i=1; i<wins.length; i++){
 			//If less than current week, we are looking at the team's record
 			if(i < currentWeek){
@@ -81,6 +96,13 @@ public class DataReader {
 		teams.add(team);
 	}
 	
+	/**
+	 * Parses the games array for a given team
+	 * @param games Array of games data from Games.csv
+	 * @param teamrow Row of team currently being analyzed
+	 * @return Returns a list of the names of the teams the current
+	 * team will play each week for the season (for the FULL season, not the remainder)
+	 */
 	private List<String> loadTeamsToPlay(List<String[]> games, int teamrow){
 		List<String> teamsToPlay = new ArrayList<String>();
 		

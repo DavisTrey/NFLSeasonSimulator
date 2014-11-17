@@ -1,16 +1,30 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Class used to simulate seasons in the NFL
+ * @author Davis Treybig
+ *
+ */
 public class SeasonSimulator {
 	public static final int seasonsToSimulate = 1000;
+	
+	//List of teams input from the .csv data. Note: these teams are never modified
+	//from their initial state. Copies are used to simulate each season
 	private List<NFLTeam> teams;
+	
+	//List of simulated seasons
 	private List<Season> seasons = new ArrayList<Season>();
 	
 	public SeasonSimulator(List<NFLTeam> teams){
 		this.teams = teams;
 	}
 	
+	/**
+	 * Simulates the number of seasons specified in seasonsToSimulate. 
+	 * Each simulated season is added to the class variable list of
+	 * simulated seasons
+	 */
 	public void simulate(){
 		for(int i=0; i<seasonsToSimulate; i++){
 			seasons.add(simulateSeason(teams));
@@ -86,7 +100,10 @@ public class SeasonSimulator {
 
 	}
 	
-	
+	/**
+	 * Copies all teams within the input list. Returns a list of
+	 * copies
+	 */
 	private List<NFLTeam> copyTeams(List<NFLTeam> teams){
 		List<NFLTeam> copyOfTeams = new ArrayList<NFLTeam>();
 		for(NFLTeam t : teams){

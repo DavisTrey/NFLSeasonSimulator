@@ -4,25 +4,35 @@ import java.util.List;
 
 
 /**
- * Data structure representing a full NFL season. Contains data on the wins and losses
+ * Data structure representing a full simulated NFL season. Contains data on the wins and losses
  * for all teams, and from that data determines playoff placements. 
  * @author Davis Treybig
  *
  */
 public class Season {
+	
+	//List of teams for the current simulated season. Since this list of teams
+	//assumes a simulated season, all teams have wins/losses assigned for the full
+	//season based on probabilities. 
 	private List<NFLTeam> teams = new ArrayList<NFLTeam>();
-
-
+	
+	//List of teams which made the playoffs through division placement
 	private List<NFLTeam> divisionPlayoffPlacement = new ArrayList<NFLTeam>();
+	
+	//List of teams which made the playoffs through conference placement
 	private List<NFLTeam> conferencePlayoffPlacement = new ArrayList<NFLTeam>();
 
 
 	public Season(List<NFLTeam> teamsInSeason){
 		this.teams = teamsInSeason;
 		Collections.sort(teams);
-		findPlayoffSeats();	
+		findPlayoffSeats();	//This can only be called after Collections.sort(teams)
 	}
 	
+	/**
+	 * Returns true if the specified team made the playoffs. Returns
+	 * false otherwise
+	 */
 	public boolean isInPlayoffs(String teamName){
 		for(NFLTeam t : divisionPlayoffPlacement){
 			if(t.getTeamName().equals(teamName)){
@@ -37,6 +47,10 @@ public class Season {
 		return false;
 	}
 	
+	/**
+	 * Computes which teams made the playoffs. Adds these teams
+	 * to the class variable playoff lists. 
+	 */
 	private void findPlayoffSeats(){
 		Conference NFC = Conference.NFC;
 		Conference AFC = Conference.AFC;

@@ -2,7 +2,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * Data structure used to represent a Division in the NFL. 
+ * @author Davis Treybig
+ *
+ */
 public enum Division {
 	AFCEast (Arrays.asList("New England Patriots", "Buffalo Bills", "Miami Dolphins", "New York Jets")),
 	AFCNorth (Arrays.asList("Pittsburgh Steelers", "Cleveland Browns", "Cincinnati Bengals", "Baltimore Ravens")),

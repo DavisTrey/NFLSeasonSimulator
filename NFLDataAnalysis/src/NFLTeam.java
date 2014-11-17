@@ -1,14 +1,22 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Data structure used to represent an NFL team in the current season. 
+ * @author Davis Treybig
+ *
+ */
 public class NFLTeam implements Comparable<NFLTeam>{
 	private String teamName;
+	
 	//Array of wins/losses for existing games. Can be "Win", "Loss", "Tie", or "" for no game
 	private List<String> record; 
+	
 	//Array of percent chances to win for the rest of the season's games. NOTE: 
-	// if there is no game that week, the percentage is -1
+	// if there is no game that week, the percentage is the percentage specified in
+	// DataReader's "noGamePercentage" variable
 	private List<Double> calculatedPercentages; 
+	
 	//Array of all opponents for the season
 	private List<String> opponents;
 	
@@ -19,6 +27,9 @@ public class NFLTeam implements Comparable<NFLTeam>{
 		this.opponents = opponents;
 	}
 	
+	/**
+	 * Used to create a copy of an existing NFL team. 
+	 */
 	public NFLTeam(NFLTeam team){
 		this.teamName = new String(team.teamName);
 		this.record = new ArrayList<String>();

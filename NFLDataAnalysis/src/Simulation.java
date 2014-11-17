@@ -5,11 +5,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Data structure representing a full simulation of many seasons. 
+ * Used to compute aggregate data regarding the simulated seasons. 
+ * @author Davis Treybig
+ *
+ */
 public class Simulation {
-
+	//List of simulated seasons
 	private List<Season> simulatedSeasons = new ArrayList<Season>();
+	
+	//Win distribution for each team. Specifically, maps team names to a list of their win
+	//numbers for each simulated season
 	private Map<String, List<Integer>> winDistribution = new HashMap<String, List<Integer>>();
+	//Maps team names to their percent chance to get in the playoffs based on the
+	//all the season simulations
 	private Map<String, Double> playoffPercentage = new HashMap<String, Double>();
 	
 	public Simulation(List<Season> seasons){
